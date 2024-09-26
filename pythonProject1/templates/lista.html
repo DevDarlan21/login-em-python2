@@ -1,0 +1,30 @@
+{% extends "template.html" %}
+
+{% block content %}
+    <h2>Lista de Jogos</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Categoria</th>
+                <th>Console</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if jogos %}
+                {% for jogo in jogos %}
+                <tr>
+                    <td>{{ jogo.nome }}</td>
+                    <td>{{ jogo.categoria }}</td>
+                    <td>{{ jogo.console }}</td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="3" class="alert alert-warning">Nenhum jogo cadastrado.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('novo') }}" class="btn btn-primary" aria-label="Adicionar um novo jogo">Adicionar Novo Jogo</a>
+{% endblock %}
